@@ -16,7 +16,7 @@ from khh import KHeavyHitters
 
 Dozen = 12
 HalfDozen = Dozen / 2
-BakersDozen = Dozen * 2
+BakersDozen = Dozen + 1
 Bushel = 125
 
 
