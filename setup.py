@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
   name='khh',
   version='1.0.0',
-  long_description='K Heavy Hitters datastructure.',
+  long_description='K- Heavy Hitters datastructure.',
   author='Sam Wenke',
   author_email='samwenke@gmail.com',
   license='BSD',
