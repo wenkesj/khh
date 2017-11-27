@@ -39,7 +39,7 @@ class KHeavyHittersTest(unittest.TestCase):
     for _ in range(Bushel * 2):
       khh.add(Fruits.Mango)
 
-    # add 2 dozen oranges
+    # add a bakers oranges
     for _ in range(BakersDozen):
       khh.add(Fruits.Orange)
 
