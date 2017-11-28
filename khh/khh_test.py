@@ -26,25 +26,34 @@ class KHeavyHittersTest(unittest.TestCase):
   Tests for KHeavyHitters
   """
   def test_add(self):
-    khh = KHeavyHitters(5)
+    k = 5
+    counts = dict()
+    khh = KHeavyHitters(k)
 
     # add a single banana
     khh.add(Fruits.Banana)
 
     # add a dozen apples
-    for _ in range(Dozen):
+    for i in range(Dozen):
       khh.add(Fruits.Apple)
+    counts[Fruits.Apple] = i
 
     # add 2 "bushel"s of mangos, we like mangos
-    for _ in range(Bushel * 2):
+    for i in range(Bushel * 2):
       khh.add(Fruits.Mango)
+    counts[Fruits.Mango] = i
 
     # add a bakers oranges
-    for _ in range(BakersDozen):
+    for i in range(BakersDozen):
       khh.add(Fruits.Orange)
+    counts[Fruits.Orange] = i
 
     # add a "bushel"
-    for _ in range(Bushel):
+    for i in range(Bushel):
       khh.add(Fruits.Strawberry)
+    counts[Fruits.Strawberry] = i
 
-    assert len(khh.k()) == len(khh._priority_queue)
+    top_k = khh.top_k()
+    for f, v in counts.items():
+      if v >= (len(khh) / k):
+        self.assertTrue(f in top_k)

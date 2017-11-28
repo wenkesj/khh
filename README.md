@@ -29,32 +29,37 @@ class Fruits(enum.Enum):
   Mango = 'mango'
 
 
-khh = KHeavyHitters(5)
+k = 5
+counts = dict()
+khh = KHeavyHitters(k)
 
 # add a single banana
 khh.add(Fruits.Banana)
 
 # add a dozen apples
-for _ in range(Dozen):
+for i in range(Dozen):
   khh.add(Fruits.Apple)
+counts[Fruits.Apple] = i
 
 # add 2 "bushel"s of mangos, we like mangos
-for _ in range(Bushel * 2):
+for i in range(Bushel * 2):
   khh.add(Fruits.Mango)
+counts[Fruits.Mango] = i
 
-# add a bakers dozen oranges
-for _ in range(BakersDozen):
+# add a bakers oranges
+for i in range(BakersDozen):
   khh.add(Fruits.Orange)
+counts[Fruits.Orange] = i
 
-# finally, add a "bushel" of strawberries
-for _ in range(Bushel):
+# add a "bushel"
+for i in range(Bushel):
   khh.add(Fruits.Strawberry)
+counts[Fruits.Strawberry] = i
 
-print(khh.k())
+top_k = khh.top_k()
 # [<Fruits.Mango: 'mango'>, <Fruits.Strawberry: 'strawberry'>, <Fruits.Orange: 'orange'>]
 
-# the reason this is 3 is because of the underlying _priority_queue,
-# it aggressively tries to save space.
-assert len(khh.k()) == len(khh._priority_queue)
-
+for f, v in counts.items():
+  if v >= (len(khh) / k): # items that show up more than (n / k) times :)
+    assert f in top_k
 ```

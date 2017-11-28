@@ -147,4 +147,4 @@ class KHeavyHitters(object):
 
   push = add
   append = add
-  top = k
+  top_k = k
